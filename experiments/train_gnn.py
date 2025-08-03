@@ -1,12 +1,12 @@
 import torch
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import torch.nn.functional as F
 from torch_geometric.datasets import Planetoid
 import torch_geometric.transforms as T
 from models.gnn_hyperbolic import HyperbolicGCN
 from optimizers.riemannian import apply_riemannian_optimizer
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Set device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
