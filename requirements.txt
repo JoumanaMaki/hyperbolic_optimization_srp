@@ -1,0 +1,6 @@
+torch>=2.0.0
+torchvision>=0.15.0
+torch-geometric>=2.3.0
+geoopt>=0.5.0
+scipy
+numpy
