@@ -1,36 +1,33 @@
 import torch
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import torch.nn.functional as F
 from torch_geometric.datasets import Planetoid
 import torch_geometric.transforms as T
-from torch_geometric.nn import GCNConv
-import geoopt
+from models.gnn_hyperbolic import HyperbolicGCN
+from optimizers.riemannian import apply_riemannian_optimizer
 
 # Set device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Load dataset
-dataset = Planetoid(root='data/Cora', name='Cora', transform=T.NormalizeFeatures())
+dataset = Planetoid(root='../data/Cora', name='Cora', transform=T.NormalizeFeatures())
 data = dataset[0].to(device)
 
-# Define a simple GCN with Geoopt manifold integration
-class HyperbolicGCN(torch.nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(HyperbolicGCN, self).__init__()
-        self.manifold = geoopt.Lorentz(c=1.0)  # another option is PoincareBall
-        self.fc1 = GCNConv(input_dim, hidden_dim)
-        self.fc2 = GCNConv(hidden_dim, output_dim)
+# Instantiate model
+model = HyperbolicGCN(
+    input_dim=dataset.num_node_features,
+    hidden_dim=16,
+    output_dim=dataset.num_classes,
+    manifold_type="lorentz"
+).to(device)
 
-    def forward(self, data):
-        x, edge_index = data.x, data.edge_index
-        x = F.relu(self.fc1(x, edge_index))
-        x = self.fc2(x, edge_index)
-        return F.log_softmax(x, dim=1)
+# optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
 
-# Instantiate model, optimizer
-model = HyperbolicGCN(input_dim=dataset.num_node_features, hidden_dim=16, output_dim=dataset.num_classes).to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
 
-# Training loop
+optimizer = apply_riemannian_optimizer(model)
+
 def train():
     model.train()
     optimizer.zero_grad()
@@ -40,7 +37,6 @@ def train():
     optimizer.step()
     return loss.item()
 
-# Testing function
 def test():
     model.eval()
     logits = model(data)
