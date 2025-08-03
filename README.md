@@ -17,5 +17,5 @@ These techniques are tested across graph datasets (e.g., Cora, Tree1111) and ima
 
 ## 👥 Authors
 Elvin Guseinov, Joumana Makki, Lavrentii Grigorian, Mustafa Ahmed, Omar Adardour  
-Supervisors: Prof. Dr. Niels Landwehr, Ahmad Bdeir
+Supervisors: Ahmad Bdeir
 
