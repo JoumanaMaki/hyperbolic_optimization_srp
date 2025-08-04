@@ -12,7 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Load dataset
-dataset = Planetoid(root='../data/Cora', name='Cora', transform=T.NormalizeFeatures())
+dataset = Planetoid(root='./data/Cora', name='Cora', transform=T.NormalizeFeatures())
 data = dataset[0].to(device)
 
 # Instantiate model
