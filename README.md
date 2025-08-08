@@ -13,28 +13,30 @@ These techniques are tested across graph datasets (e.g., Cora, Tree1111) and ima
 ## Setup the environment
 
 1. Install **uv** package (not inside any other venv!)
-
+   
     ```pipx install uv```
 
+   **Note:** check [docs](https://docs.astral.sh/uv/getting-started/installation/) if you encounter problems
 
-2. Create the environment 
+
+3. Create the environment 
 
     ```uv venv```
 
 
-3. Activate the environment
+4. Activate the environment
 
 
     * Windows: ```source .venv/Scripts/activate```
     * Linux-based: ```source .venv/bin/activate```
 
 
-4. Install the dependencies from lock file:
+5. Install the dependencies from lock file:
 
     ```uv sync --locked```
 
 
-5. *(Optional)* Sometimes **pip** module is missing, in that case:
+6. *(Optional)* Sometimes **pip** module is missing, in that case:
 
     1. install it 
 
