@@ -41,8 +41,14 @@ These techniques are tested across graph datasets (e.g., Cora, Tree1111) and ima
         ```uv pip install pip```
 
     2. Or just use 
-    
+
         ```uv pip list```
+
+## Add new packages
+
+1. ```uv add <package_name>```
+
+2. Commit the ```pyproject``` and ```lock``` files and push them
 
 ## 📦 Tools & Libraries
 - [PyTorch](https://pytorch.org/)
