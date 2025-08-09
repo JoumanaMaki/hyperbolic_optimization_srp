@@ -8,10 +8,8 @@ import torch.nn.functional as F
 from torch_geometric.nn import GCNConv
 from torch_geometric.nn import global_mean_pool
 
-from config import SEED
-from utils.seed_everything import seed_everything
 
-
+# TODO: figure out the exact architecture from the paper 
 class GCN(torch.nn.Module):
     def __init__(self, num_node_features: int, hidden_channels: int, num_classes: int):
         super(GCN, self).__init__()
