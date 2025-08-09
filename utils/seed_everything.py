@@ -11,6 +11,7 @@ def seed_everything() -> None:
     """
     Makes experiments reproducible.
     To work in jupyter notebook it must be run in every cell that contains randomized functions.
+    If called once in jupyter, the subsequent executions of the same cell will give different results => kernel restart is necessary.
     """
     os.environ['PYTHONHASHSEED'] = str(SEED)
     random.seed(SEED)
