@@ -9,12 +9,12 @@ from torch_geometric.nn import GCNConv
 from torch_geometric.nn import global_mean_pool
 
 from config import SEED
+from utils.seed_everything import seed_everything
 
 
 class GCN(torch.nn.Module):
     def __init__(self, num_node_features: int, hidden_channels: int, num_classes: int):
         super(GCN, self).__init__()
-        torch.manual_seed(SEED)
         self.conv1 = GCNConv(num_node_features, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, hidden_channels)
         self.conv3 = GCNConv(hidden_channels, hidden_channels)
