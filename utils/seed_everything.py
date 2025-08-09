@@ -19,3 +19,8 @@ def seed_everything() -> None:
 
     if torch.cuda.is_available():
         torch.cuda.manual_seed(SEED)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+
+    if torch.mps.is_available():
+        torch.mps.manual_seed(SEED)
