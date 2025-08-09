@@ -1,5 +1,5 @@
 """
-Simple GCN Model Architecture
+Simple GCN Model Architecture, matches the paper below
 https://arxiv.org/pdf/1609.02907
 """
 import torch
@@ -15,10 +15,10 @@ class GCN(torch.nn.Module):
         self.conv2 = GCNConv(hidden_channels, hidden_channels)
         self.out = Linear(hidden_channels, num_classes)
 
-    def forward(self, x: torch.tensor) -> torch.tensor:
-        x = self.conv1(x)
+    def forward(self, x: torch.tensor, edge_index: torch.tensor) -> torch.tensor:
+        x = self.conv1(x, edge_index)
         x = self.relu(x)
-        x = self.conv2(x)
+        x = self.conv2(x, edge_index)
         x = self.out(x)
         
         return x
