@@ -790,6 +790,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "geoopt" },
+    { name = "networkx" },
     { name = "numpy" },
     { name = "scipy" },
     { name = "torch" },
@@ -800,6 +801,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "geoopt", specifier = ">=0.5.1" },
+    { name = "networkx", specifier = ">=3.5" },
     { name = "numpy", specifier = ">=2.3.2" },
     { name = "scipy", specifier = ">=1.16.1" },
     { name = "torch", specifier = ">=2.8.0" },
