@@ -31,13 +31,13 @@ def generate_tree1111(gamma):
     child_list = list(range(1, 1111))
     edges_tree1111 = pd.DataFrame({'parent': parent_list, 'child': child_list})
 
-    os.makedirs('./datasets/tree1111', exist_ok=True)
+    os.makedirs('../datasets/tree1111', exist_ok=True)
     subdir = str(gamma).replace('.', '')
-    os.makedirs(f'./datasets/tree1111/g{subdir}_lp', exist_ok=True)
+    os.makedirs(f'../datasets/tree1111/g{subdir}_lp', exist_ok=True)
 
-    edges_tree1111.to_csv(f'./datasets/tree1111/g{subdir}_lp/g{subdir}_lp.edges.csv', index=False)
-    np.save(f'./datasets/tree1111/g{subdir}_lp/g{subdir}_lp.labels.npy', labels_tree1111)
-    sp.save_npz(f'./datasets/tree1111/g{subdir}_lp/g{subdir}_lp.feats.npz', sp.csr_matrix(feats_tree1111))
+    edges_tree1111.to_csv(f'../datasets/tree1111/g{subdir}_lp/g{subdir}_lp.edges.csv', index=False)
+    np.save(f'../datasets/tree1111/g{subdir}_lp/g{subdir}_lp.labels.npy', labels_tree1111)
+    sp.save_npz(f'../datasets/tree1111/g{subdir}_lp/g{subdir}_lp.feats.npz', sp.csr_matrix(feats_tree1111))
 
 for gamma in gammas:
     print(f'Generating tree1111 for gamma={gamma}')
