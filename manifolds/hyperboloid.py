@@ -2,8 +2,8 @@
 
 import torch
 
-from manifolds.base import Manifold
-from utils.math_utils import arcosh, cosh, sinh 
+from .base import Manifold
+from ..utils.math_utils import arcosh, cosh, sinh 
 
 
 class Hyperboloid(Manifold):
