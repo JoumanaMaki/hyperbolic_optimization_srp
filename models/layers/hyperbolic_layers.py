@@ -7,8 +7,6 @@ import torch.nn.functional as F
 import torch.nn.init as init
 from torch.nn.modules.module import Module
 
-from .attention_layers import DenseAtt
-
 
 def get_dim_act_curv(args):
     """
@@ -119,17 +117,13 @@ class HypAgg(Module):
     Hyperbolic aggregation layer.
     """
 
-    def __init__(self, manifold, c, in_features, dropout, use_att, local_agg):
+    def __init__(self, manifold, c, in_features, local_agg):
         super(HypAgg, self).__init__()
         self.manifold = manifold
         self.c = c
 
         self.in_features = in_features
-        self.dropout = dropout
         self.local_agg = local_agg
-        self.use_att = use_att
-        if self.use_att:
-            self.att = DenseAtt(in_features, dropout)
 
     def forward(self, x, adj):
         x_tangent = self.manifold.logmap0(x, c=self.c)
