@@ -5,6 +5,9 @@ import pandas as pd
 
 
 def generate_tree1111(gamma: float) -> None:
+    """
+    TODO: add docstring, elaborate on what gamma is and what is going on in the function
+    """
     feats_tree1111 = np.zeros((1111, 1000))
     labels_tree1111 = np.zeros(1111)
 
