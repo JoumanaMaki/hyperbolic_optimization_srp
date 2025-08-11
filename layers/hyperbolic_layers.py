@@ -64,8 +64,7 @@ class HyperbolicGraphConvolution(nn.Module):
         self.agg = HypAgg(manifold, c_in, out_features, dropout, local_agg)
         self.hyp_act = HypAct(manifold, c_in, c_out, act)
 
-    def forward(self, input):
-        x, adj = input
+    def forward(self, x: torch.tensor, adj: torch.tensor) -> torch.tensor:
         h = self.linear.forward(x)
         h = self.agg.forward(h, adj)
         h = self.hyp_act.forward(h)
