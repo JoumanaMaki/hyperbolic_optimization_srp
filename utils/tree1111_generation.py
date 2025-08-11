@@ -3,9 +3,8 @@ import scipy.sparse as sp
 import os
 import pandas as pd
 
-gammas = [0.0, 0.05, 0.10, 0.15, 0.2, 0.4, 0.6, 0.8, 1.0]
 
-def generate_tree1111(gamma):
+def generate_tree1111(gamma: float) -> None:
     feats_tree1111 = np.zeros((1111, 1000))
     labels_tree1111 = np.zeros(1111)
 
@@ -39,7 +38,10 @@ def generate_tree1111(gamma):
     np.save(f'../datasets/tree1111/g{subdir}_lp/g{subdir}_lp.labels.npy', labels_tree1111)
     sp.save_npz(f'../datasets/tree1111/g{subdir}_lp/g{subdir}_lp.feats.npz', sp.csr_matrix(feats_tree1111))
 
-for gamma in gammas:
-    print(f'Generating tree1111 for gamma={gamma}')
-    generate_tree1111(gamma)
-    print(f'Finished generating tree1111 for gamma={gamma}\n')
+
+if __name__ == "__main__":
+    gammas = [0.0, 0.05, 0.10, 0.15, 0.2, 0.4, 0.6, 0.8, 1.0]
+    for gamma in gammas:
+        print(f'Generating tree1111 for gamma={gamma}')
+        generate_tree1111(gamma)
+        print(f'Finished generating tree1111 for gamma={gamma}\n')
