@@ -4,7 +4,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-import hgcn.manifolds
+import hgcn.manifolds as manifolds
 import hgcn.layers.hyp_layers as hyp_layers
 from ..layers.att_layers import GraphAttentionLayer
 from ..layers.layers import GraphConvolution, Linear, get_dim_act
