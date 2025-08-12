@@ -3,13 +3,11 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 import manifolds
-from layers.att_layers import GraphAttentionLayer
-import layers.hyp_layers as hyp_layers
-from layers.layers import GraphConvolution, Linear, get_dim_act
-import utils.math_utils as pmath
+import hgcn.layers.hyp_layers as hyp_layers
+from ..layers.att_layers import GraphAttentionLayer
+from ..layers.layers import GraphConvolution, Linear, get_dim_act
 
 
 class Encoder(nn.Module):

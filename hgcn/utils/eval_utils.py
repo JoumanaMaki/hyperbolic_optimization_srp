@@ -1,4 +1,4 @@
-from sklearn.metrics import average_precision_score, accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score
 
 def acc_f1(output, labels, average='binary'):
     preds = output.max(1)[1].type_as(labels)

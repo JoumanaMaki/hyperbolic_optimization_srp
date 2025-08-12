@@ -7,7 +7,7 @@ import torch.nn.functional as F
 import torch.nn.init as init
 from torch.nn.modules.module import Module
 
-from layers.att_layers import DenseAtt
+from .att_layers import DenseAtt
 
 
 def get_dim_act_curv(args):

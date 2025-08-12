@@ -1,11 +1,8 @@
 """Euclidean layers."""
-import math
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.modules.module import Module
-from torch.nn.parameter import Parameter
 
 
 def get_dim_act(args):

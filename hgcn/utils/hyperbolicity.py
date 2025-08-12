@@ -1,13 +1,11 @@
 import os
-import pickle as pkl
-import sys
 import time
 
 import networkx as nx
 import numpy as np
 from tqdm import tqdm
 
-from utils.data_utils import load_data_lp
+from .data_utils import load_data_lp
 
 
 def hyperbolicity_sample(G, num_samples=50000):
