@@ -7,6 +7,12 @@ repos:
     - id: ruff-check
       types_or: [ python, pyi ]
       args: [ --fix ]
+      exclude: |
+        ^hgcn/ |
+        ^layers/
     # Run the formatter.
     - id: ruff-format
       types_or: [ python, pyi ]
+      exclude: |
+        ^hgcn/ |
+        ^layers/
