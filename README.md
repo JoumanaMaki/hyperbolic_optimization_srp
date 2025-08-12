@@ -10,7 +10,9 @@ We compare three optimization strategies in hyperbolic space:
 
 These techniques are tested across graph datasets (e.g., Cora, Tree1111) and image datasets (e.g., MNIST, CIFAR-100) using fully hyperbolic neural architectures.
 
-## Setup the environment
+# Setup the environment
+
+## 1. Install UV and create virtual environment
 
 1. Install **uv** package (not inside any other venv!)
    
@@ -46,18 +48,27 @@ These techniques are tested across graph datasets (e.g., Cora, Tree1111) and ima
 
         ```uv pip list```
 
-## Add new packages
+## 2. Add new packages
 
 1. ```uv add <package_name>```
 
 2. Commit the ```pyproject``` and ```lock``` files and push them
 
-## 📦 Tools & Libraries
+## 3. Pre-commit hook
+
+Install pre-commit to make the code style consistent among developers.
+
+Run ```pre-commit install``` once you set up the venv
+
+This will automatically format your code to a beautiful standardized format when you try to commit.
+
+# 📦 Tools & Libraries
 - [PyTorch](https://pytorch.org/)
 - [Geoopt](https://geoopt.readthedocs.io/)
 - [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/) (for graph models)
 
-## 👥 Authors
+
+# 👥 Authors
 Elvin Guseinov, Joumana Makki, Lavrentii Grigorian, Mustafa Ahmed, Omar Adardour  
 Supervisor: Ahmad Bdeir
 
