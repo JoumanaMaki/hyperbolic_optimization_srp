@@ -1,3 +1,4 @@
 [submodule "hgcn"]
 	path = hgcn
 	url = git@github.com:HazyResearch/hgcn.git
+	ignore = all
