@@ -1,10 +1,10 @@
 """Graph decoders."""
-import manifolds
 import torch.nn as nn
 import torch.nn.functional as F
 
-from layers.att_layers import GraphAttentionLayer
-from layers.layers import GraphConvolution, Linear
+import hgcn.manifolds as manifolds
+from hgcn.layers.att_layers import GraphAttentionLayer
+from hgcn.layers.layers import GraphConvolution, Linear
 
 
 class Decoder(nn.Module):
