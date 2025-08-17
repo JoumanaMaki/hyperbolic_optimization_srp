@@ -9,6 +9,7 @@ import torch
 from torch.nn import ReLU, Dropout
 from torch_geometric.nn import GCNConv
 
+
 class GCN(torch.nn.Module):
     """
     - 2 x GCNConv
@@ -16,6 +17,7 @@ class GCN(torch.nn.Module):
     - Dropout (default 0.5) on input features and between layers
     - Second conv outputs logits directly (no extra Linear)
     """
+
     def __init__(
         self,
         num_node_features: int,
@@ -35,10 +37,9 @@ class GCN(torch.nn.Module):
         )
 
     def forward(self, x: torch.Tensor, edge_index: torch.Tensor) -> torch.Tensor:
-        x = self.dropout(x)                 # Dropout on input features
+        x = self.dropout(x)  # Dropout on input features
         x = self.conv1(x, edge_index)
         x = self.relu(x)
-        x = self.dropout(x)                 # Dropout after first GCN layer
-        x = self.conv2(x, edge_index)       # Final logits (use CrossEntropyLoss)
+        x = self.dropout(x)  # Dropout after first GCN layer
+        x = self.conv2(x, edge_index)  # Final logits (use CrossEntropyLoss)
         return x
-        
