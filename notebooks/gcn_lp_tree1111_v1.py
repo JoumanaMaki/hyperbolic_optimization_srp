@@ -27,7 +27,7 @@ project_root = osp.abspath(osp.join(osp.dirname(__file__), ".."))
 sys.path.append(project_root)
 
 from utils.seed_everything import seed_everything
-
+from models.link_prediction.gcn_lp import GCN_LP
 if torch.cuda.is_available():
     device = torch.device('cuda')
 elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
@@ -64,7 +64,7 @@ else:
 # Load edges
 # ------------------------
 df = pd.read_csv('datasets/tree1111/g00_lp/g00_lp.edges.csv')  # columns: ['parent','child']
-edge_index = torch.tensor([df['parent'].values, df['child'].values], dtype=torch.long)
+edge_index = torch.tensor(np.array([np.array(df['parent'].values), np.array(df['child'].values)]), dtype=torch.long)
 
 
 # ------------------------
@@ -84,22 +84,7 @@ transform = T.Compose([
 ])
 train_data, val_data, test_data = transform(data)
 
-class GCN_LP(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, out_channels):
-        super().__init__()
-        self.conv1 = GCNConv(in_channels, hidden_channels)
-        self.conv2 = GCNConv(hidden_channels, out_channels)
 
-    def encode(self, x, edge_index):
-        x = self.conv1(x, edge_index).relu()
-        return self.conv2(x, edge_index)
-
-    def decode(self, z, edge_label_index):
-        return (z[edge_label_index[0]] * z[edge_label_index[1]]).sum(dim=-1)
-
-    def decode_all(self, z):
-        prob_adj = z @ z.t()
-        return (prob_adj > 0).nonzero(as_tuple=False).t()
 
 
 model = GCN_LP(data.num_features, 128, 64).to(device)
