@@ -35,13 +35,6 @@ elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
 else:
     device = torch.device('cpu')
 
-transform = T.Compose([
-    T.NormalizeFeatures(),
-    T.ToDevice(device),
-    T.RandomLinkSplit(num_val=0.05, num_test=0.1, is_undirected=True,
-                      add_negative_train_samples=False),
-])
-
 # ------------------------
 # Load features
 # ------------------------
